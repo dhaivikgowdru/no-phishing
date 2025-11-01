@@ -9,6 +9,7 @@ import pickle
 from convert import convertion
 warnings.filterwarnings('ignore')
 from feature import FeatureExtraction
+import os
 
 file = open("newmodel.pkl","rb")
 gbc = pickle.load(file)
@@ -41,4 +42,6 @@ def predict():
 def usecases():
     return render_template('usecases.html')
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
+
